@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    active: demo
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -24,7 +24,7 @@ spring:
   profiles: local
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mycloud?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/mycloud?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&autoReconnection=true
     username: mycloud
     password: 1111
 
@@ -52,9 +52,9 @@ spring:
   profiles: demo
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mycloud?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
-    username: mycloud
-    password: 1111
+    url: jdbc:mysql://mycloud.cd0oe5pce9m5.ap-northeast-2.rds.amazonaws.com:3306/mycloud?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&autoReconnection=true
+    username: root
+    password: qkrtjdgh21
 
   jpa:
     show-sql: true
@@ -69,7 +69,8 @@ logging:
     org.springframework.security: trace
 
 auth-server:
-  token-end-point-url: http://ec2-54-180-24-79.ap-northeast-2.compute.amazonaws.com:8081/oauth/check_token
+#  token-end-point-url: http://ec2-54-180-24-79.ap-northeast-2.compute.amazonaws.com:8081/oauth/check_token
+  token-end-point-url: http://localhost:8081/oauth/check_token
   resource-id: resource-1
   client-id: test-api1
   secrete: 1111
